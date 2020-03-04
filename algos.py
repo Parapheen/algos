@@ -33,28 +33,26 @@ def is_correct(s):
 
 
 # 3. https://www.codewars.com/kata/555615a77ebc7c2c8a0000b8/train/python
-def tickets(people):
-    bank = [] # clerks money
-    """ if there is change with 25$ we return YES starting our sales """
-    for cash in people:
-        if cash > 25 and len(bank) == 0:
-            return 'NO'
-        elif cash == 25:
-            bank.append(cash)
+# def tickets(people):
+    
+
+# 4. binary_search
+def binary_search(l, item):
+    low = 0
+    high = len(l) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        guess = l[mid]
+        if guess == item:
+            return mid
+        elif guess > item:
+            high = mid - 1
         else:
-            if sum(bank) >= cash - 25:
-                while bank:
-                    change = cash - bank[-1]
-                    bank.pop()
-                    if change == 25:
-                        bank.append(cash)
-                        break
-                    
-            else:
-                return 'NO'
-    return 'YES'
+            low = mid + 1
+    return None
 
 
 if __name__ == '__main__':
     # print(is_correct('foo(bar);'))
-    print(tickets([25, 25, 50, 100]))
+    # print(tickets([25, 25, 25, 25, 50, 100, 50]))
+    print(binary_search([1, 3, 5, 7, 9], 3))
